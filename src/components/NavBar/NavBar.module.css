@@ -1,0 +1,11 @@
+.NavBar {
+    display: flex;
+    justify-content: space-between;
+    background-color: #b8c8df;
+    padding: 10px;
+}
+
+.NavLink {
+    color: white;
+    text-decoration: none;
+}

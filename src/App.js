@@ -1,25 +1,54 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
+import { Route, Switch, Link } from 'react-router-dom';
 import './App.css';
 
+import SignupPage from './pages/SignupPage/SignupPage'
+import LoginPage from './pages/LoginPage/LoginPage'
+import NewsfeedPage from './pages/NewsfeedPage/NewsfeedPage'
+import AboutPage from './pages/AboutPage/AboutPage'
+import NavBar from './components/NavBar/NavBar'
+
+import userService from './services/userService'
+
 class App extends Component {
+  state = {
+    user: null
+  }
+
+  handleSignuporLogin = () => {
+    this.setState({user: userService.getUser()});
+  }
+
+  async componentDidMount() {
+    const user = userService.getUser();
+    this.setState({ user });
+  }
+
   render() {
     return (
       <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            Edit <code>src/App.js</code> and save to reload.
-          </p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-        </header>
+      <NavBar />
+      <Switch>
+        <Route exact patch='/' render={()=> 
+          <NewsfeedPage 
+          user={this.state.user}/>
+          }/>
+        <Route exact path='/about' render={() => 
+          <AboutPage />
+          }/>
+        <Route exact path='/signup' render={({ history })=> 
+          <SignupPage 
+          history={history}
+          handleSignUporLogin={this.handleSignUporLogin}
+          />
+        }/>
+        <Route exact path='/login' render={({ history })=>
+          <LoginPage 
+          history={history}
+          handleSignUporLogin={this.handleSignUporLogin}
+          />
+        }/>
+      </Switch>
       </div>
     );
   }
