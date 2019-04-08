@@ -19,6 +19,11 @@ class App extends Component {
     this.setState({user: userService.getUser()});
   }
 
+  handleLogout = () => {
+    userService.logout();
+    this.setState({ user: null });
+  }
+
   async componentDidMount() {
     const user = userService.getUser();
     this.setState({ user });
@@ -27,9 +32,12 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-      <NavBar />
+      <NavBar 
+      user={this.state.user}
+      handleLogout={this.handleLogout}
+      />
       <Switch>
-        <Route exact patch='/' render={()=> 
+        <Route exact path='/' render={()=> 
           <NewsfeedPage 
           user={this.state.user}/>
           }/>
@@ -39,13 +47,13 @@ class App extends Component {
         <Route exact path='/signup' render={({ history })=> 
           <SignupPage 
           history={history}
-          handleSignUporLogin={this.handleSignUporLogin}
+          handleSignuporLogin={this.handleSignuporLogin}
           />
         }/>
         <Route exact path='/login' render={({ history })=>
           <LoginPage 
           history={history}
-          handleSignUporLogin={this.handleSignUporLogin}
+          handleSignuporLogin={this.handleSignuporLogin}
           />
         }/>
       </Switch>
