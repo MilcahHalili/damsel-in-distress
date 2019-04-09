@@ -22,7 +22,6 @@ class App extends Component {
   }
 
   handleUpdatePosts = posts => {
-    console.log(posts)
     this.setState({posts: posts})
   }
 

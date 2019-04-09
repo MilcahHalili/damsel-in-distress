@@ -3,7 +3,8 @@ const Post = require('../models/Post')
 module.exports = {
     index, 
     create, 
-    deletePosts
+    deletePosts, 
+    addComment
 }
 
 async function index (req, res){
@@ -21,6 +22,25 @@ async function create (req, res){
     }
 }
 
-function deletePosts (req,res){
-    console.log(req.body)
+async function deletePosts (req,res){
+    try {
+        await Post.findOneAndDelete(id=req.body.id)
+        index(req, res);
+    } catch (err) {
+        res.json({err})
+    }
+}
+
+async function addComment (req, res) {
+    console.log(req.body.comment)
+    console.log(req.body.post_id)
+    try {
+        await Post.findById(req.body.post_id, function (err, post){
+            post.comments.push({text: req.body.comment});
+            post.save();
+            index(req,res);
+        }) 
+    } catch (err){
+            res.json({err})
+    }
 }

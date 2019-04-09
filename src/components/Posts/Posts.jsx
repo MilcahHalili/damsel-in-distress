@@ -1,56 +1,61 @@
 import React, {Component} from 'react';
 import postsService from '../../services/postsService'
+import AddPost from '../AddPost/AddPost'
+import PostFeed from '../PostFeed/PostFeed'
+
 import './Posts.css'
 
 class Posts extends Component {
     state = {
         text: '',
+        comment: '',
     }
 
     handleChange = e => {
         this.setState({[e.target.name]: e.target.value})
     }
 
-    handleSubmit = e => {
+    handleSubmit = async (e) => {
         e.preventDefault()
-        postsService.create(this.state.text)
+        await postsService.create(this.state.text)
+        const posts = await postsService.index()
+        this.props.handleUpdatePosts(posts)
         this.setState({text: ''})
+    }
+
+    handleDelete = e => {
+        postsService.deletePost(e.target.name)
+    }
+
+    handleAddComment = async (e) => {
+        e.preventDefault();
+        await postsService.addComment(e.target.id, this.state.comment)
+        const posts = await postsService.index()
+        this.props.handleUpdatePosts(posts)
+        this.setState({comment: ''})
     }
 
     async componentDidMount() {
         const posts = await postsService.index()
+        console.log(posts)
         this.props.handleUpdatePosts(posts);
     }
 
     render(){
         return (
             <div className='Posts'>
-                <form className='Post-form' onSubmit={this.handleSubmit}>
-                    <h3 className='Post-header'>&nbsp; add new post</h3>
-                    <input 
-                        className='Post-input' 
-                        type='text' 
-                        name='text' 
-                        value={this.state.text}
-                        autoComplete='off'
-                        onChange={this.handleChange}
-                        placeholder=' you are stronger than you think'
-                        />
-                    <div className='Post-button-container'>
-                    <input className='btn btn-default Post-button' type='submit' value='submit' />
-                    </div>
-                </form>
-                {this.props.posts.map((post, idx) => 
-                <div className='Post-container' key={idx}>
-                    <h4 className='Post-text'>{post.text}</h4>
-                    <form className='Comment-form'>
-                        <input 
-                            className='Comment-input'
-                            placeholder=' show your support'
-                        />
-                    </form>
-                </div>
-                )}
+                <AddPost 
+                    text={this.state.text}
+                    handleChange={this.handleChange}
+                    handleSubmit={this.handleSubmit}
+                />
+                <PostFeed
+                    posts={this.props.posts}
+                    comment={this.state.comment}
+                    handleDelete={this.handleDelete}
+                    handleChange={this.handleChange}
+                    handleAddComment={this.handleAddComment}
+                />
             </div>
         ) 
     }
