@@ -28,6 +28,11 @@
     border: 1px solid #b8c8df;
 }
 
+.Post-tools {
+    display: flex;
+    justify-content: space-evenly;
+}
+
 .Post-input {
     height: 50px;
     font-size: 20px;
@@ -66,16 +71,49 @@
 .Post-delete {
     width: 15px;
     height: 15px;
-    justify-content: left;
-    margin: 0px;
     background-color: #b8c8df;
     border: 2px #b8c8df solid;
     border-radius:4px;
+    justify-self: flex-end;
+}
+
+.Post-categories {
+    display: flex;
+    flex-wrap: wrap;
+    width: 500px;
+    margin-bottom: 10px;
+}
+
+.Post-category-button {
+    font-size: 15px;
+    background-color: #b8c8df;
+    border-radius: 8px;
+    margin: 3px;
+    padding: 5px;
+    outline: none;
+}
+
+.Post-category-button:focus {
+    background-color: gray;
+    color: lightgray;
+}
+
+.Comments-container {
+    margin-bottom: 15px;
+}
+
+.Comments-text {
+    border: 1px gray solid;
+    border-radius: 4px;
+    display: flex;
+    align-items: center;
+    margin: 5px;
+    padding: 5px;
 }
 
 @media screen and (max-width: 600px) {
     .Post-form {
-        width: 350px;
+        width: 370px;
     }
     
     .Post-input,  .Post-header {
@@ -88,12 +126,20 @@
         font-size: 15px;
     }
 
+    .Post-categories {
+        width: 350px;
+    }
+
     .Comment-input {
         width: 275px;
     }
 
     .Post-container {
-        width: 350px;
+        width: 370px;
+    }
+
+    .Post-category-button {
+        font-size: 12px;
     }
 }
 
@@ -107,6 +153,10 @@
         font-size: 15px;
     }
 
+    .Post-input {
+        height: 30px;
+    }
+
     .Post-button {
         width: 70px;
         font-size: 15px;
@@ -118,5 +168,13 @@
 
     .Post-container {
         width: 300px;
+    }
+
+    .Post-categories {
+        width: 250px;
+    }
+
+    .Post-category-button {
+        font-size: 12px;
     }
 }

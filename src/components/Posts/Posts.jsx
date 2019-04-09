@@ -9,6 +9,7 @@ class Posts extends Component {
     state = {
         text: '',
         comment: '',
+        categories: [],
     }
 
     handleChange = e => {
@@ -17,14 +18,16 @@ class Posts extends Component {
 
     handleSubmit = async (e) => {
         e.preventDefault()
-        await postsService.create(this.state.text)
+        await postsService.create({text: this.state.text, categories: this.state.categories})
         const posts = await postsService.index()
         this.props.handleUpdatePosts(posts)
-        this.setState({text: ''})
+        this.setState({text: '', categories: []})
     }
 
-    handleDelete = e => {
-        postsService.deletePost(e.target.name)
+    handleDelete = async (e) => {
+        await postsService.deletePost(e.target.name)
+        const posts = await postsService.index()
+        this.props.handleUpdatePosts(posts)
     }
 
     handleAddComment = async (e) => {
@@ -35,9 +38,16 @@ class Posts extends Component {
         this.setState({comment: ''})
     }
 
+    handleAddCategory = e => {
+        let category = e.target.name 
+        let categoriesCopy = this.state.categories
+        categoriesCopy.push(category)
+        this.setState({categories: categoriesCopy})
+        console.log(this.state.categories)
+    }
+
     async componentDidMount() {
         const posts = await postsService.index()
-        console.log(posts)
         this.props.handleUpdatePosts(posts);
     }
 
@@ -48,6 +58,7 @@ class Posts extends Component {
                     text={this.state.text}
                     handleChange={this.handleChange}
                     handleSubmit={this.handleSubmit}
+                    handleAddCategory={this.handleAddCategory}
                 />
                 <PostFeed
                     posts={this.props.posts}

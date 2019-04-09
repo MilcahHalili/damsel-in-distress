@@ -15,16 +15,18 @@ async function index (req, res){
 
 async function create (req, res){
     try {
-        await Post.create({text: req.body.post});
+        const post = await Post.create({text: req.body.post.text, categories: req.body.post.categories});
+        console.log(post)
         index(req, res);
     } catch (err) {
+        console.log(err)
         res.json({err})
     }
 }
 
 async function deletePosts (req,res){
     try {
-        await Post.findOneAndDelete(id=req.body.id)
+        await Post.findByIdAndDelete(req.body.post_id)
         index(req, res);
     } catch (err) {
         res.json({err})
@@ -32,8 +34,6 @@ async function deletePosts (req,res){
 }
 
 async function addComment (req, res) {
-    console.log(req.body.comment)
-    console.log(req.body.post_id)
     try {
         await Post.findById(req.body.post_id, function (err, post){
             post.comments.push({text: req.body.comment});

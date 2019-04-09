@@ -1,4 +1,5 @@
 import React from 'react';
+import PostCategories from '../PostCategories/PostCategories'
 
 const AddPost = props => {
     return (
@@ -14,6 +15,7 @@ const AddPost = props => {
                     onChange={props.handleChange}
                     placeholder=' you are stronger than you think'
                 />
+                <PostCategories handleAddCategory={props.handleAddCategory} />
                 <div className='Post-button-container'>
                     <input className='btn btn-default Post-button' type='submit' value='submit' />
                 </div>
