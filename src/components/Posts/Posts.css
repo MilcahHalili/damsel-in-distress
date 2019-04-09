@@ -1,0 +1,110 @@
+.Posts {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.Post-button-container {
+    text-align: right;
+}
+
+.Post-button {
+    width: 100px;
+    font-size: 20px;
+}
+
+.Post-button:hover {
+    background-color: #b8c8df;
+}
+.Post-form {
+    margin-bottom: 30px;
+    width: 550px;
+    border: .25px gray solid;
+    padding: 15px;
+}
+
+.Post-header {
+    background-color: #b8c8df;
+    border: 1px solid #b8c8df;
+}
+
+.Post-input {
+    height: 50px;
+    font-size: 20px;
+}
+
+.Post-input, .Comment-input {
+    border-radius: 6px;
+    border: 1px gray solid;
+    margin-bottom: 10px;
+    outline: none;
+    width: 520px;
+}
+
+.Comment-input {
+    height: 25px;
+}
+
+.Comment-form {
+    vertical-align: middle;
+}
+
+.Post-container {
+    border: .25px gray solid;
+    width: 550px;
+    padding: 15px;
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.Post-text {
+    text-align: left;
+}
+
+@media screen and (max-width: 600px) {
+    .Post-form {
+        width: 350px;
+    }
+    
+    .Post-input,  .Post-header {
+        width: 300px;
+        font-size: 20px;
+    }
+
+    .Post-button {
+        width: 70px;
+        font-size: 15px;
+    }
+
+    .Comment-input {
+        width: 275px;
+    }
+
+    .Post-container {
+        width: 350px;
+    }
+}
+
+@media screen and (max-width: 425px) {
+    .Post-form {
+        width: 300px;
+    }
+    
+    .Post-input,  .Post-header {
+        width: 270px;
+        font-size: 15px;
+    }
+
+    .Post-button {
+        width: 70px;
+        font-size: 15px;
+    }
+
+    .Comment-input {
+        width: 275px;
+    }
+
+    .Post-container {
+        width: 300px;
+    }
+}

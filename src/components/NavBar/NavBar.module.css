@@ -1,15 +1,38 @@
-.NavBar {
+.NavBarVisitor, .NavBarUser {
     display: flex;
     justify-content: space-between;
+    align-items: center;
     background-color: #b8c8df;
     padding: 10px;
+    font-size: 15px;
 }
 
-.NavLink {
-    color: white;
-    text-decoration: none;
+.NavBarVisitor {
+    justify-content: flex-end;
 }
 
 .NavWelcome {
+    font-size: 15px;
+    visibility: hidden;
+}
+
+.NavLink, .NavLogout, .NavWelcome {
+    text-decoration: none;
+    color: black;
+    letter-spacing: 2px;
+}
+
+.NavLogout {
+    color: #5a6c87;
+}
+.NavLink:hover, .NavLogout:hover, .NavWelcome:hover {
+    text-decoration: none;
     color: white;
+}
+
+@media only screen and (min-width: 600px) {
+  .NavWelcome {
+      visibility: visible;
+      font-size: 18px;
+  }
 }

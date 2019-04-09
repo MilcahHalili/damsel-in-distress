@@ -1,20 +1,41 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { IconContext } from 'react-icons'
+import { FaBell, FaArrowLeft } from 'react-icons/fa'
 
 import styles from './NavBar.module.css'
 
 const NavBar = (props) => {
     return (
         props.user ? 
-        <div className={styles.NavBar}>
-            <Link className={styles.NavLink} to='' onClick={props.handleLogout}>LOGOUT</Link>
-            <Link className={styles.NavLink} to='/about'>ABOUT</Link>
-            <span className={styles.NavWelcome}>WELCOME, {props.user.name}</span>
+        <div className={styles.NavBarUser}>
+            <span>
+                <Link className={styles.NavLogout} to='' onClick={props.handleLogout}>
+                <IconContext.Provider value={{ style: { verticalAlign: 'middle', color:'#5a6c87' } }}>
+                <FaArrowLeft />
+                &nbsp;
+                </IconContext.Provider>
+                logout
+                </Link>
+                &nbsp; &nbsp; &nbsp; 
+            </span>
+            <div>
+                <Link className={styles.NavWelcome}>{props.user.name.toLowerCase()}</Link>
+                &nbsp; &nbsp;
+                <IconContext.Provider value={{ style: { verticalAlign: 'middle'} }}>
+                <span className={styles.NavNotfications}><FaBell /></span>
+                </IconContext.Provider>   
+            </div>
         </div>
         :
-        <div className={styles.NavBar}>
-           <Link className={styles.NavLink} to='/login'>LOGIN</Link>
-           <Link className={styles.NavLink} to='/signup'>SIGN UP</Link>
+        <div className={styles.NavBarVisitor}>
+           <Link className={styles.NavLink} to='/login'>
+           login
+           </Link>
+           &nbsp;
+           <span>|</span>
+           &nbsp;
+           <Link className={styles.NavLink} to='/signup'>signup</Link>
        </div>
     )
 }

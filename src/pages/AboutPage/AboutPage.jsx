@@ -1,9 +1,17 @@
 import React from 'react';
+import './AboutPage.css'
 
 const AboutPage = () => {
     return (
         <div className='About'>
-        <h1>All About Damsel In Distress</h1>
+            <div className='Def'>
+                <h2 className='Def-Heading'>dam·sel in dis·tress</h2>
+                <h3 className='Def-Sub-Heading'>/ˈdamzəl/ /in/ /dəˈstres/</h3>
+                <br></br>
+                <p className='DefTerm'>a young woman in trouble (with the implication that the woman needs to be rescued, as by a prince in a fairy tale).</p>
+            </div>
+            <h3 className='About-Heading'>about us</h3>
+            <h5 className='About-Details'>some sort of description</h5>
         </div>
     )
 }

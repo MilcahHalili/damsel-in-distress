@@ -1,9 +1,15 @@
 import React from 'react';
+import styles from './NewsfeedPage.module.css'
+import Posts from '../../components/Posts/Posts'
 
-const NewsfeedPage = () => {
+const NewsfeedPage = (props) => {
     return (
-        <div className='Newsfeed'>
-        <h1>This is your NewsFeed</h1>
+        <div className={styles.Newsfeed}>
+            <Posts 
+                posts={props.posts}
+                handleUpdatePosts={props.handleUpdatePosts}
+                handleSubmit={props.handleSubmit}
+            />
         </div>
     )
 }
