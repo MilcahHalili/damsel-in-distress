@@ -18,12 +18,25 @@ class Posts extends Component {
 
     handleSubmit = async (e) => {
         e.preventDefault()
-        await postsService.create({text: this.state.text, categories: this.state.categories})
-        const posts = await postsService.index()
-        this.props.handleUpdatePosts(posts)
+        await postsService.create({text: this.state.text, categories: this.state.categories}, this.props.user._id)
+        this.checkforUserPage()
         this.setState({text: '', categories: []})
     }
 
+    checkforUserPage = async () => {
+        if (this.props.user && this.props.isUserPage === true) {
+            console.log('user')
+            const user = await postsService.userIndex(this.props.user._id)
+            console.log(user)
+            const posts = user.posts
+            console.log(posts)
+            this.props.handleUpdatePosts(posts)
+        } else {
+            console.log('feed')
+            const posts = await postsService.index()
+            this.props.handleUpdatePosts(posts);
+        }
+    }
     handleDelete = async (e) => {
         await postsService.deletePost(e.target.name)
         const posts = await postsService.index()
@@ -47,8 +60,7 @@ class Posts extends Component {
     }
 
     async componentDidMount() {
-        const posts = await postsService.index()
-        this.props.handleUpdatePosts(posts);
+        this.checkforUserPage()
     }
 
     render(){
@@ -66,6 +78,8 @@ class Posts extends Component {
                     handleDelete={this.handleDelete}
                     handleChange={this.handleChange}
                     handleAddComment={this.handleAddComment}
+                    isUserPage={this.props.isUserPage}
+                    user={this.props.user}
                 />
             </div>
         ) 

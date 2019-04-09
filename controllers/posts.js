@@ -1,10 +1,12 @@
 const Post = require('../models/Post')
+const User = require('../models/User')
 
 module.exports = {
     index, 
     create, 
     deletePosts, 
-    addComment
+    addComment, 
+    userIndex
 }
 
 async function index (req, res){
@@ -13,10 +15,19 @@ async function index (req, res){
     return res.json(posts)
 }
 
+async function userIndex(req, res){
+    const posts = await User.findById(req.params.id).populate('posts')
+    .sort({createdAt: -1})
+    console.log(posts)
+    return res.json(posts)
+}
+
 async function create (req, res){
     try {
         const post = await Post.create({text: req.body.post.text, categories: req.body.post.categories});
-        console.log(post)
+        const user = await User.findById(req.params.id)
+        user.posts.push(post)
+        user.save()
         index(req, res);
     } catch (err) {
         console.log(err)

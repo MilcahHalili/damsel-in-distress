@@ -5,10 +5,10 @@ const PostFeed = props => {
         <div>
             {props.posts.map((post, idx) => 
            <div className='Post-container' key={post._id}>
-                {/* <button className='Post-delete' name={post._id} onClick={props.handleDelete} /> */}
+                <button className='Post-delete' name={post._id} onClick={props.handleDelete} />
                 <div className='Post-categories'>
                 {post.categories.map((word) =>
-                    <span className='Post-category-button'>{word}</span>
+                    <span key={word} className='Post-category-button'>{word}</span>
                 )}
                 </div>
                 <h4 className='Post-text'>{post.text}</h4>

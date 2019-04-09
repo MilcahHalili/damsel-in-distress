@@ -13,7 +13,6 @@
 
 .NavWelcome {
     font-size: 15px;
-    visibility: hidden;
 }
 
 .NavLink, .NavLogout, .NavWelcome {
@@ -25,14 +24,14 @@
 .NavLogout {
     color: #5a6c87;
 }
-.NavLink:hover, .NavLogout:hover, .NavWelcome:hover {
+.NavLink:hover, .NavLogout:hover, .NavWelcome:hover, .NavLink:visited, .NavLogut:visited, .NavWelcome:visited, .NavLink:active, .NavLogout:active, .NavWelcome:active {
     text-decoration: none;
     color: white;
 }
 
-@media only screen and (min-width: 600px) {
-  .NavWelcome {
-      visibility: visible;
-      font-size: 18px;
+@media only screen and (max-width: 500px) {
+  .NavTools {
+      display: flex;
+      flex-direction: column;
   }
 }

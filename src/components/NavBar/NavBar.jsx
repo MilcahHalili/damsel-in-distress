@@ -20,7 +20,14 @@ const NavBar = (props) => {
                 &nbsp; &nbsp; &nbsp; 
             </span>
             <div>
-                <Link to= '' className={styles.NavWelcome}>{props.user.name.toLowerCase()}</Link>
+                <Link to= '/user' className={styles.NavWelcome}>WELCOME, {props.user.name.toLowerCase()}</Link>
+            </div>
+            <div className={styles.NavTools}>
+                <Link to ='/' className={styles.NavLink}>feed</Link>
+                &nbsp; &nbsp;
+                <Link to ='/about' className={styles.NavLink}>about</Link>
+                &nbsp; &nbsp;
+                <Link to ='' className={styles.NavLink}>chat</Link>
                 &nbsp; &nbsp;
                 <IconContext.Provider value={{ style: { verticalAlign: 'middle'} }}>
                 <span className={styles.NavNotfications}><FaBell /></span>

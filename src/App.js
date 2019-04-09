@@ -6,6 +6,7 @@ import SignupPage from './pages/SignupPage/SignupPage'
 import LoginPage from './pages/LoginPage/LoginPage'
 import NewsfeedPage from './pages/NewsfeedPage/NewsfeedPage'
 import AboutPage from './pages/AboutPage/AboutPage'
+import ProfilePage from './pages/ProfilePage/ProfilePage'
 import NavBar from './components/NavBar/NavBar'
 
 import userService from './services/userService'
@@ -58,6 +59,14 @@ class App extends Component {
             :
             <Redirect to='/about' />
           }/>
+          <Route exact path='/user' render={() => 
+            <ProfilePage 
+              user={this.state.user}
+              posts={this.state.posts}
+              handleUpdatePosts={this.handleUpdatePosts}
+            />
+          }
+          />
           <Route exact path='/about' render={() => 
             <AboutPage />
             }/>

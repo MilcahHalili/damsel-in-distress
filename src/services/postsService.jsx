@@ -4,13 +4,17 @@ function index () {
     return fetch(BASE_URL).then(res => res.json());
 }
 
-function create (post) {
+function userIndex (user_id){
+    return fetch(BASE_URL + user_id).then(res => res.json());
+}
+
+function create (post, user_id) {
     const options = {
         method: 'POST', 
         headers: {'Content-Type': 'application/json'},
         body: JSON.stringify({'post': post})
     }
-    return fetch(BASE_URL, options).then(res => res.json());
+    return fetch(BASE_URL + user_id, options).then(res => res.json());
 }
 
 function deletePost (post_id){
@@ -35,5 +39,6 @@ export default {
     index, 
     create, 
     deletePost,
-    addComment
+    addComment, 
+    userIndex
 }

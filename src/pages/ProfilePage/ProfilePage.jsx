@@ -1,15 +1,14 @@
 import React, { Component } from 'react';
-import styles from './NewsfeedPage.module.css'
 import Posts from '../../components/Posts/Posts'
+import './ProfilePage.css'
 
-class NewsfeedPage extends Component {
+class ProfilePage extends Component {
     state = {
-        isUserPage:false
+        isUserPage:true
     }
-
-    render(){
+    render () {
         return (
-            <div className={styles.Newsfeed}>
+            <div className='Profile'>
                 <Posts 
                     posts={this.props.posts}
                     handleUpdatePosts={this.props.handleUpdatePosts}
@@ -20,6 +19,7 @@ class NewsfeedPage extends Component {
             </div>
         )
     }
+ 
 }
 
-export default NewsfeedPage;
+export default ProfilePage;

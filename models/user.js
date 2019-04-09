@@ -10,7 +10,7 @@ const userSchema = new mongoose.Schema({
     triggerwords: [],
     posts: [{
       type: mongoose.Schema.Types.ObjectId,
-      ref: 'Posts'
+      ref: 'Post'
   }]
 }, {
     timestamps: true
