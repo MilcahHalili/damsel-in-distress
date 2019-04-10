@@ -94,7 +94,7 @@ const PostCategories = (props) => {
         <button 
              type="button"
              className='Post-category-button'
-             name='breakups'
+             name='loss'
              onClick={props.handleAddCategory}
         >
         loss
@@ -102,7 +102,7 @@ const PostCategories = (props) => {
         <button 
              type="button"
              className='Post-category-button'
-             name='breakups'
+             name='loneliness'
              onClick={props.handleAddCategory}
         >
         loneliness

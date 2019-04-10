@@ -24,12 +24,9 @@ class Posts extends Component {
     }
 
     checkforUserPage = async () => {
-        if (this.props.user && this.props.isUserPage === true) {
+        if (this.props.isUserPage === true) {
             console.log('user')
-            const user = await postsService.userIndex(this.props.user._id)
-            console.log(user)
-            const posts = user.posts
-            console.log(posts)
+            let posts = await postsService.userIndex(this.props.user._id)
             this.props.handleUpdatePosts(posts)
         } else {
             console.log('feed')
@@ -37,6 +34,7 @@ class Posts extends Component {
             this.props.handleUpdatePosts(posts);
         }
     }
+
     handleDelete = async (e) => {
         await postsService.deletePost(e.target.name)
         const posts = await postsService.index()

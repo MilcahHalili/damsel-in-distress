@@ -50,7 +50,7 @@ class App extends Component {
         />
         <Switch>
           <Route exact path='/' render={()=> 
-            userService.getUser() ?
+            this.state.user ?
             <NewsfeedPage 
               user={this.state.user}
               posts={this.state.posts}

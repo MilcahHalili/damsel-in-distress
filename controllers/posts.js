@@ -16,8 +16,8 @@ async function index (req, res){
 }
 
 async function userIndex(req, res){
-    const posts = await User.findById(req.params.id).populate('posts')
-    .sort({createdAt: -1})
+    const user = await User.findById(req.params.id).populate('posts')
+    const posts = user.posts
     console.log(posts)
     return res.json(posts)
 }
@@ -45,6 +45,7 @@ async function deletePosts (req,res){
 }
 
 async function addComment (req, res) {
+    console.log('here')
     try {
         await Post.findById(req.body.post_id, function (err, post){
             post.comments.push({text: req.body.comment});
