@@ -1,5 +1,5 @@
 import React from 'react';
-import PostCategories from '../PostCategories/PostCategories'
+import PostTags from '../PostTags/PostTags'
 
 const AddPost = props => {
     return (
@@ -15,7 +15,7 @@ const AddPost = props => {
                     onChange={props.handleChange}
                     placeholder=' you are stronger than you think'
                 />
-                <PostCategories 
+                <PostTags
                     handleAddTag={props.handleAddTag} 
                     tags={props.tags}
                     triggerWords={props.triggerWords}

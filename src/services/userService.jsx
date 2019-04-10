@@ -18,6 +18,14 @@ function signup(user) {
   });
 }
 
+function getUserFull(user_id){
+  return fetch(BASE_URL + user_id, {
+    method: 'GET', 
+    headers: ({'Content-Type': 'application/json'})
+  })
+  .then(res => res.json())
+}
+
 function getUser() {
   return tokenService.getUserFromToken();
 }
@@ -44,5 +52,6 @@ export default {
   signup, 
   getUser,
   logout, 
-  login
+  login, 
+  getUserFull
 };

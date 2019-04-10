@@ -27,6 +27,10 @@ class App extends Component {
     this.setState({posts: posts})
   }
 
+  handleUpdateUser = user => {
+    this.setState({user: user})
+  }
+
   handleSignuporLogin = () => {
     this.setState({user: userService.getUser()});
   }
@@ -56,6 +60,7 @@ class App extends Component {
               user={this.state.user}
               posts={this.state.posts}
               handleUpdatePosts={this.handleUpdatePosts}
+              handleUpdateUser={this.handleUpdateUser}
               triggerWords={this.state.triggerWords}
             />
             :
@@ -66,6 +71,7 @@ class App extends Component {
               user={this.state.user}
               posts={this.state.posts}
               handleUpdatePosts={this.handleUpdatePosts}
+              handleUpdateUser={this.handleUpdateUser}
               triggerWords={this.state.triggerWords}
             />
           }

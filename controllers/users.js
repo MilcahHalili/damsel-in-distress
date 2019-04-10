@@ -4,7 +4,8 @@ const SECRET = process.env.SECRET;
 
 module.exports = {
   signup, 
-  login
+  login, 
+  getUser
 };
 
 /*----- Helper Functions -----*/
@@ -43,5 +44,15 @@ async function login(req, res) {
     });
   } catch (err) {
     return res.status(401).json(err);
+  }
+}
+
+async function getUser(req, res){
+  console.log('here')
+  try {
+    const user = await User.findById(req.params.id).populate('posts')
+    return res.json(user)
+  } catch (err) {
+    return res.status(401).json(err)
   }
 }

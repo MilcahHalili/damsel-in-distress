@@ -24,6 +24,9 @@
 }
 
 .Post-header {
+    margin-top: 0px;
+    margin-left: -15px;
+    width: 550px;
     background-color: #b8c8df;
     border: 1px solid #b8c8df;
 }
@@ -39,19 +42,11 @@
 }
 
 .Post-input, .Comment-input {
-    border-radius: 6px;
+    border-radius: 12px;
     border: 1px gray solid;
     margin-bottom: 10px;
     outline: none;
     width: 520px;
-}
-
-.Comment-input {
-    height: 25px;
-}
-
-.Comment-form {
-    vertical-align: middle;
 }
 
 .Post-container {
@@ -60,6 +55,7 @@
     display: flex;
     flex-direction: column;
     padding: 15px;
+    padding-top: 5px;
     text-align: center;
     margin-bottom: 30px;
 }
@@ -69,22 +65,22 @@
 }
 
 .Post-delete {
-    width: 15px;
-    height: 15px;
     background-color: #b8c8df;
     border: 2px #b8c8df solid;
     border-radius:4px;
     justify-self: flex-end;
 }
 
-.Post-categories {
+.Post-tags {
     display: flex;
     flex-wrap: wrap;
     width: 500px;
-    margin-bottom: 10px;
+    padding: 0px;
+    margin-top: 0px;
+    margin-left: 5px;
 }
 
-.Post-category-button {
+.Post-tag-button {
     font-size: 15px;
     background-color: #b8c8df;
     border-radius: 8px;
@@ -93,9 +89,16 @@
     outline: none;
 }
 
-.Post-category-button:focus {
-    background-color: gray;
-    color: lightgray;
+.Post-toolbar {
+    display: flex;
+    justify-items: space-between;
+    align-items: baseline;
+    margin: -3px;
+    margin-left: -15px;
+    margin-bottom: 10px;
+    padding: 0px;
+    border-bottom: 1px gray solid;
+    width: 550px;
 }
 
 .Comments-container {
@@ -110,6 +113,15 @@
     margin: 5px;
     padding: 5px;
 }
+
+.Comment-input {
+    height: 25px;
+}
+
+.Comment-form {
+    vertical-align: middle;
+}
+
 
 @media screen and (max-width: 600px) {
     .Post-form {
@@ -126,7 +138,7 @@
         font-size: 15px;
     }
 
-    .Post-categories {
+    .Post-tags {
         width: 350px;
     }
 
@@ -138,7 +150,7 @@
         width: 370px;
     }
 
-    .Post-category-button {
+    .Post-tag-button {
         font-size: 12px;
     }
 }
@@ -170,11 +182,11 @@
         width: 300px;
     }
 
-    .Post-categories {
+    .Post-tags {
         width: 250px;
     }
 
-    .Post-category-button {
+    .Post-tag-button {
         font-size: 12px;
     }
 }

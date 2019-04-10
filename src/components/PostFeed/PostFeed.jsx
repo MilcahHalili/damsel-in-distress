@@ -11,12 +11,16 @@ const PostFeed = props => {
            <div 
             className='Post-container' 
             key={post._id}>
-                <button className='Post-delete' name={post._id} onClick={props.handleDelete} />
-                <div className='Post-categories'>
+            <div className='Post-toolbar'>
+                <div className='Post-tags'>
                 {post.tags.map((word) =>
-                    <span key={word} className='Post-category-button'>{word}</span>
+                    <span key={word} className='Post-tag-button'>{word}</span>
                 )}
                 </div>
+                <div>
+                <button className='Post-delete' name={post._id} onClick={props.handleDelete}>X</button>
+                </div>
+            </div>
                 <h4 className='Post-text'>{post.text}</h4>
                 <div className='Comments-container'>
                     {post.comments.map((comment) =>

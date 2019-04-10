@@ -1,14 +1,13 @@
 import React from 'react'
 
-const PostCategories = (props) => {
-    
+const PostTags = (props) => {
     return (
-        <div className='Post-categories'>
+        <div className='Post-tags'>
         {props.triggerWords.map(word => 
             <button
             key={word}
             type="button"
-            className='Post-category-button'
+            className='Post-tag-button'
             style={{
                 backgroundColor: props.tags.includes(word) ? 'gray' : '#b8c8df'
             }}
@@ -22,4 +21,4 @@ const PostCategories = (props) => {
     )
 }
 
-export default PostCategories;
+export default PostTags;

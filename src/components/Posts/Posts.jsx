@@ -54,10 +54,9 @@ class Posts extends Component {
         let tagsCopy = this.state.tags
         tagsCopy.push(tag)
         this.setState({tags: tagsCopy})
-        console.log(this.state.tags)
     }
 
-    async componentDidMount() {
+   componentDidMount() {
         this.checkforUserPage()
     }
 
