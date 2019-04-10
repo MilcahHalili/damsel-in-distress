@@ -16,6 +16,7 @@ class NewsfeedPage extends Component {
                     handleSubmit={this.props.handleSubmit}
                     user={this.props.user}
                     isUserPage={this.state.isUserPage}
+                    triggerWords={this.props.triggerWords}
                 />
             </div>
         )

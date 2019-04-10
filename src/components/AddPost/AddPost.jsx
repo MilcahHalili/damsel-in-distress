@@ -15,7 +15,11 @@ const AddPost = props => {
                     onChange={props.handleChange}
                     placeholder=' you are stronger than you think'
                 />
-                <PostCategories handleAddCategory={props.handleAddCategory} />
+                <PostCategories 
+                    handleAddTag={props.handleAddTag} 
+                    tags={props.tags}
+                    triggerWords={props.triggerWords}
+                />
                 <div className='Post-button-container'>
                     <input className='btn btn-default Post-button' type='submit' value='submit' />
                 </div>

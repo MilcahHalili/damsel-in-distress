@@ -8,7 +8,7 @@ const commentSchema = new mongoose.Schema({
 
 const postSchema = new mongoose.Schema ({
     text: String,
-    categories: [],
+    tags: [],
     comments: [commentSchema]
 }, {
     timestamps: true

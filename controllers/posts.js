@@ -24,7 +24,7 @@ async function userIndex(req, res){
 
 async function create (req, res){
     try {
-        const post = await Post.create({text: req.body.post.text, categories: req.body.post.categories});
+        const post = await Post.create({text: req.body.post.text, tags: req.body.post.tags});
         const user = await User.findById(req.params.id)
         user.posts.push(post)
         user.save()

@@ -2,12 +2,18 @@ import React from 'react';
 
 const PostFeed = props => {
     return (
-        <div>
+        <div 
+        style={{
+            display: 'flex',
+            flexDirection: props.isUserPage ? 'column-reverse': 'column'
+        }}>
             {props.posts.map((post, idx) => 
-           <div className='Post-container' key={post._id}>
+           <div 
+            className='Post-container' 
+            key={post._id}>
                 <button className='Post-delete' name={post._id} onClick={props.handleDelete} />
                 <div className='Post-categories'>
-                {post.categories.map((word) =>
+                {post.tags.map((word) =>
                     <span key={word} className='Post-category-button'>{word}</span>
                 )}
                 </div>

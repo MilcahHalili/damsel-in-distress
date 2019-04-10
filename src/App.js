@@ -16,6 +16,7 @@ class App extends Component {
   state = {
     user: null,
     posts: [],
+    triggerWords: ['depression', 'anxiety', 'sexual violence', 'rape', 'sexual harassment', 'domestic violence', 'self-harm', 'suicide', 'relationships', 'breakups', 'work', 'loss', 'loneliness', 'stress']
   }
 
   handleSubmit = (e) => {
@@ -55,6 +56,7 @@ class App extends Component {
               user={this.state.user}
               posts={this.state.posts}
               handleUpdatePosts={this.handleUpdatePosts}
+              triggerWords={this.state.triggerWords}
             />
             :
             <Redirect to='/about' />
@@ -64,6 +66,7 @@ class App extends Component {
               user={this.state.user}
               posts={this.state.posts}
               handleUpdatePosts={this.handleUpdatePosts}
+              triggerWords={this.state.triggerWords}
             />
           }
           />

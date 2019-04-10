@@ -9,7 +9,7 @@ class Posts extends Component {
     state = {
         text: '',
         comment: '',
-        categories: [],
+        tags: [],
     }
 
     handleChange = e => {
@@ -18,9 +18,9 @@ class Posts extends Component {
 
     handleSubmit = async (e) => {
         e.preventDefault()
-        await postsService.create({text: this.state.text, categories: this.state.categories}, this.props.user._id)
+        await postsService.create({text: this.state.text, tags: this.state.tags}, this.props.user._id)
         this.checkforUserPage()
-        this.setState({text: '', categories: []})
+        this.setState({text: '', tags: []})
     }
 
     checkforUserPage = async () => {
@@ -49,12 +49,12 @@ class Posts extends Component {
         this.setState({comment: ''})
     }
 
-    handleAddCategory = e => {
-        let category = e.target.name 
-        let categoriesCopy = this.state.categories
-        categoriesCopy.push(category)
-        this.setState({categories: categoriesCopy})
-        console.log(this.state.categories)
+    handleAddTag = e => {
+        let tag = e.target.name 
+        let tagsCopy = this.state.tags
+        tagsCopy.push(tag)
+        this.setState({tags: tagsCopy})
+        console.log(this.state.tags)
     }
 
     async componentDidMount() {
@@ -68,7 +68,9 @@ class Posts extends Component {
                     text={this.state.text}
                     handleChange={this.handleChange}
                     handleSubmit={this.handleSubmit}
-                    handleAddCategory={this.handleAddCategory}
+                    handleAddTag={this.handleAddTag}
+                    tags={this.state.tags}
+                    triggerWords={this.props.triggerWords}
                 />
                 <PostFeed
                     posts={this.props.posts}
