@@ -18,6 +18,16 @@ const ProfileInfo = (props) => {
                         {word}
                     </span>
                 )}
+                <h5>update trigger words</h5>
+                <div className='Profile-triggerwords-container'>
+                {props.triggerWords.map(word =>
+                    <button
+                        key={word}
+                        className='Profile-triggerword-button'
+                    >
+                    {word}
+                    </button>)}
+                </div>
             </div>
         </div>
     )

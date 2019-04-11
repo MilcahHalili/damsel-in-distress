@@ -7,7 +7,10 @@ import './ProfileSideBar.css'
 const ProfileSideBar = props => {
     return (
        <div className='Profile-SideBar'>
-           <ProfileInfo user={props.user}/>
+           <ProfileInfo 
+            user={props.user}
+            triggerWords={props.triggerWords}
+            />
            <Resources />
        </div>
     )

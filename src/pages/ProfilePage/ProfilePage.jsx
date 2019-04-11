@@ -6,7 +6,7 @@ import postsService from '../../services/postsService';
 
 class ProfilePage extends Component {
     state = {
-        posts: []
+        posts: [],
     }
 
     handleUpdatePosts = async () => {
@@ -27,6 +27,7 @@ class ProfilePage extends Component {
             <div className='Profile'>
                 <ProfileSideBar
                     user={this.props.user}
+                    triggerWords={this.state.userTriggers}
                 />
                 <Posts 
                     posts={this.state.posts}
