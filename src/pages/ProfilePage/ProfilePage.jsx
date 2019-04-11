@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import Posts from '../../components/Posts/Posts'
-// import userService from '../../services/userService'
-import ProfileInfo from '../../components/ProfileInfo/ProfileInfo'
+import ProfileSideBar from '../../components/ProfileSideBar/ProfileSideBar'
 import './ProfilePage.css'
 import postsService from '../../services/postsService';
 
@@ -9,7 +8,6 @@ class ProfilePage extends Component {
     state = {
         posts: []
     }
-
 
     handleUpdatePosts = async () => {
         const posts = await postsService.userIndex()
@@ -27,13 +25,12 @@ class ProfilePage extends Component {
     render () {
         return (
             <div className='Profile'>
-                <ProfileInfo 
+                <ProfileSideBar
                     user={this.props.user}
                 />
                 <Posts 
                     posts={this.state.posts}
                     user={this.props.user}
-                    // isUserPage={this.state.isUserPage}
                     triggerWords={this.props.triggerWords}
                     handleUpdatePosts={this.handleUpdatePosts}
                     handleSubmit={this.props.handleSubmit}

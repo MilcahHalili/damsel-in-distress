@@ -42,10 +42,6 @@ class Posts extends Component {
         this.setState({tags: tagsCopy})
     }
 
-//    componentDidMount() {
-//         this.checkforUserPage()
-//     }
-
     render(){
         return (
             <div className='Posts'>

@@ -1,4 +1,5 @@
 import React from 'react';
+import Resources from '../../components/Resources/Resources'
 import './AboutPage.css'
 
 const AboutPage = () => {
@@ -12,6 +13,9 @@ const AboutPage = () => {
             </div>
             <h3 className='About-Heading'>about us</h3>
             <h5 className='About-Details'>some sort of description</h5>
+            <div className='About-resources'>
+                <Resources />
+            </div>
         </div>
     )
 }

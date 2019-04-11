@@ -10,26 +10,16 @@ import ProfilePage from './pages/ProfilePage/ProfilePage'
 import NavBar from './components/NavBar/NavBar'
 
 import userService from './services/userService'
-import postsService from './services/postsService'
 
 class App extends Component {
   state = {
     user: null,
-    // posts: [],
-    triggerWords: ['depression', 'anxiety', 'sexual violence', 'rape', 'sexual harassment', 'domestic violence', 'self-harm', 'suicide', 'relationships', 'breakups', 'work', 'loss', 'loneliness', 'stress']
+    triggerWords: ['depression', 'anxiety', 'sexual violence', 'rape', 'sexual harassment', 'domestic violence', 'self-harm', 'suicide', 'relationships', 'breakups', 'work', 'loss', 'loneliness', 'stress', 'addiction', 'eating disorder']
   }
 
   handleSubmit = (e) => {
     e.preventDefault()
   }
-
-  // handleUpdatePosts = posts => {
-  //   this.setState({posts: posts})
-  // }
-
-  // handleUpdateUser = user => {
-  //   this.setState({user: user})
-  // }
 
   handleSignuporLogin = () => {
     this.setState({user: userService.getUser()});
@@ -58,8 +48,6 @@ class App extends Component {
             this.state.user ?
             <NewsfeedPage 
               user={this.state.user}
-              // posts={this.state.posts}
-              // handleUpdatePosts={this.handleUpdatePosts}
               triggerWords={this.state.triggerWords}
             />
             :
@@ -68,8 +56,6 @@ class App extends Component {
           <Route exact path='/user' render={() => 
             <ProfilePage 
               user={this.state.user}
-              // posts={this.state.posts}
-              // handleUpdatePosts={this.handleUpdatePosts}
               triggerWords={this.state.triggerWords}
             />
           }

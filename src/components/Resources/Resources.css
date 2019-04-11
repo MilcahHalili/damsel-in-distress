@@ -1,0 +1,15 @@
+.Resources {
+    margin-left: 10px;
+    text-align: center;
+}
+
+.Resource-details {
+    text-align: center;
+    padding: 0px;
+    margin-bottom: 25px;
+}
+
+.Resource-heading {
+    letter-spacing: 2px;
+    margin-bottom: 20px;
+}
