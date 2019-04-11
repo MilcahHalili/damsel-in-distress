@@ -2,11 +2,7 @@ import React from 'react';
 
 const PostFeed = props => {
     return (
-        <div 
-        style={{
-            display: 'flex',
-            flexDirection: props.isUserPage ? 'column-reverse': 'column'
-        }}>
+        <div>
             {props.posts.map((post, idx) => 
            <div 
             className='Post-container' 

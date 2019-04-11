@@ -1,18 +1,27 @@
 import React, { Component } from 'react';
 import Posts from '../../components/Posts/Posts'
-import userService from '../../services/userService'
+// import userService from '../../services/userService'
 import ProfileInfo from '../../components/ProfileInfo/ProfileInfo'
 import './ProfilePage.css'
+import postsService from '../../services/postsService';
 
 class ProfilePage extends Component {
     state = {
-        isUserPage:true
+        posts: []
+    }
+
+
+    handleUpdatePosts = async () => {
+        const posts = await postsService.userIndex()
+        this.setState({posts: posts})
     }
 
     async componentDidMount() {
-        const user = await userService.getUserFull()
-        this.props.handleUpdateUser(user)
-        console.log(this.props.user)
+        const posts = await postsService.userIndex()
+        console.log(posts)
+        this.setState({posts: posts})
+        // this.props.handleUpdateUser(user)
+        // console.log(this.props.user)
     }
 
     render () {
@@ -22,11 +31,11 @@ class ProfilePage extends Component {
                     user={this.props.user}
                 />
                 <Posts 
-                    posts={this.props.posts}
+                    posts={this.state.posts}
                     user={this.props.user}
-                    isUserPage={this.state.isUserPage}
+                    // isUserPage={this.state.isUserPage}
                     triggerWords={this.props.triggerWords}
-                    handleUpdatePosts={this.props.handleUpdatePosts}
+                    handleUpdatePosts={this.handleUpdatePosts}
                     handleSubmit={this.props.handleSubmit}
                 />
             </div>

@@ -2,33 +2,30 @@ import React, { Component } from 'react';
 import userService from '../../services/userService'
 import styles from './NewsfeedPage.module.css'
 import Posts from '../../components/Posts/Posts'
+import postsService from '../../services/postsService';
 
 class NewsfeedPage extends Component {
     state = {
-        isUserPage:false
+        posts: []
+    }
+
+
+    handleUpdatePosts = async () => {
+        const posts = await this.checkforTriggerWords()
+        this.setState({posts: posts})
     }
 
     checkforTriggerWords = async () => {
-        console.log(this.props.user)
         
-        const userPosts = this.props.posts.filter(post => {
-            let post_id = post._id.toString()
-            for(let i=0; i < this.props.user.posts.length; i++){
-                if(this.props.user.posts[i]._id === post_id){
-                    return post
-                }
-            }
+        const allPosts = await postsService.index()
+
+        const userPosts = allPosts.filter(post => {
+            return this.props.user._id === post.user
         })
-    
         console.log(userPosts)
 
-        const nonUserPosts = this.props.posts.filter(post => {
-            let post_id = post._id.toString()
-            let userPostIds = []
-            for(let i=0; i < this.props.user.posts.length; i++){
-                userPostIds.push(this.props.user.posts[i]._id)
-                }
-            return !userPostIds.includes(post_id)
+        const nonUserPosts = allPosts.filter(post => {
+            return this.props.user._id !== post.user
         })
         console.log(nonUserPosts)
 
@@ -46,29 +43,31 @@ class NewsfeedPage extends Component {
         const validPosts = nonUserPosts.filter(post => {
             return isPostValid(post, this.props.user) 
         })
-
         console.log(validPosts)
 
         const posts = userPosts.concat(validPosts)
         console.log(posts.length)
-        await this.props.handleUpdatePosts(posts)
+        console.log(allPosts.length)
+        return posts
+        // await this.props.handleUpdatePosts(posts)
     }
 
     async componentDidMount() {
-        const user = await userService.getUserFull()
-        this.props.handleUpdateUser(user)
-        this.checkforTriggerWords()
+        // const user = await userService.getUserFull()
+        // this.props.handleUpdateUser(user)
+        const posts = await this.checkforTriggerWords()
+        this.setState({posts: posts})
     }
 
     render(){
         return (
             <div className={styles.Newsfeed}>
                 <Posts 
-                    posts={this.props.posts}
+                    posts={this.state.posts}
                     user={this.props.user}
-                    isUserPage={this.state.isUserPage}
+                    // isUserPage={this.state.isUserPage}
                     triggerWords={this.props.triggerWords}
-                    handleUpdatePosts={this.props.handleUpdatePosts}
+                    handleUpdatePosts={this.handleUpdatePosts}
                     handleSubmit={this.props.handleSubmit}
                 />
             </div>

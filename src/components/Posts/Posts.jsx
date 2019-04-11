@@ -19,34 +19,19 @@ class Posts extends Component {
     handleSubmit = async (e) => {
         e.preventDefault()
         await postsService.create({text: this.state.text, tags: this.state.tags})
-        this.checkforUserPage()
+        await this.props.handleUpdatePosts()
         this.setState({text: '', tags: []})
-    }
-
-    checkforUserPage = async () => {
-        if (this.props.isUserPage === true) {
-            console.log('user')
-            let posts = await postsService.userIndex()
-            this.props.handleUpdatePosts(posts)
-            console.log(posts)
-        } else {
-            console.log('feed')
-            const posts = await postsService.index()
-            this.props.handleUpdatePosts(posts);
-        }
     }
 
     handleDelete = async (e) => {
         await postsService.deletePost(e.target.name)
-        const posts = await postsService.index()
-        this.props.handleUpdatePosts(posts)
+        this.props.handleUpdatePosts()
     }
 
     handleAddComment = async (e) => {
         e.preventDefault();
         await postsService.addComment(e.target.id, this.state.comment)
-        const posts = await postsService.index()
-        this.props.handleUpdatePosts(posts)
+        await this.props.handleUpdatePosts()
         this.setState({comment: ''})
     }
 
@@ -57,9 +42,9 @@ class Posts extends Component {
         this.setState({tags: tagsCopy})
     }
 
-   componentDidMount() {
-        this.checkforUserPage()
-    }
+//    componentDidMount() {
+//         this.checkforUserPage()
+//     }
 
     render(){
         return (

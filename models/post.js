@@ -8,8 +8,12 @@ const commentSchema = new mongoose.Schema({
 
 const postSchema = new mongoose.Schema ({
     text: String,
-    tags: [],
-    comments: [commentSchema]
+    tags: [String],
+    comments: [commentSchema], 
+    user: {  
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'User'
+    }
 }, {
     timestamps: true
 })

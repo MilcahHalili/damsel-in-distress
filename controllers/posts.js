@@ -16,20 +16,16 @@ async function index (req, res){
 }
 
 async function userIndex(req, res){
-    const user = await User.findById(req.user._id)
-    const userPosts = await user.populate('posts')
-    console.log('up:' + userPosts)
-    const posts = userPosts.posts
-    console.log(user)
+    const posts = await Post.find({user: req.user._id})
+    .sort({createdAt: -1})
+    console.log(posts)
     return res.json(posts)
 }
 
 async function create (req, res){
     try {
-        const post = await Post.create({text: req.body.post.text, tags: req.body.post.tags});
-        const user = await User.findById(req.user._id)
-        user.posts.push(post)
-        user.save()
+        const post = await Post.create({text: req.body.post.text, tags: req.body.post.tags, user: req.user._id});
+        console.log(post)
         index(req, res);
     } catch (err) {
         console.log(err)

@@ -15,7 +15,7 @@ import postsService from './services/postsService'
 class App extends Component {
   state = {
     user: null,
-    posts: [],
+    // posts: [],
     triggerWords: ['depression', 'anxiety', 'sexual violence', 'rape', 'sexual harassment', 'domestic violence', 'self-harm', 'suicide', 'relationships', 'breakups', 'work', 'loss', 'loneliness', 'stress']
   }
 
@@ -23,13 +23,13 @@ class App extends Component {
     e.preventDefault()
   }
 
-  handleUpdatePosts = posts => {
-    this.setState({posts: posts})
-  }
+  // handleUpdatePosts = posts => {
+  //   this.setState({posts: posts})
+  // }
 
-  handleUpdateUser = user => {
-    this.setState({user: user})
-  }
+  // handleUpdateUser = user => {
+  //   this.setState({user: user})
+  // }
 
   handleSignuporLogin = () => {
     this.setState({user: userService.getUser()});
@@ -42,8 +42,8 @@ class App extends Component {
 
   async componentDidMount() {
     const user = userService.getUser();
-    const posts = await postsService.index();
-    this.setState({ user:user, posts:posts });
+    // const posts = await postsService.index();
+    this.setState({ user:user });
   }
 
   render() {
@@ -58,9 +58,8 @@ class App extends Component {
             this.state.user ?
             <NewsfeedPage 
               user={this.state.user}
-              posts={this.state.posts}
-              handleUpdatePosts={this.handleUpdatePosts}
-              handleUpdateUser={this.handleUpdateUser}
+              // posts={this.state.posts}
+              // handleUpdatePosts={this.handleUpdatePosts}
               triggerWords={this.state.triggerWords}
             />
             :
@@ -69,9 +68,8 @@ class App extends Component {
           <Route exact path='/user' render={() => 
             <ProfilePage 
               user={this.state.user}
-              posts={this.state.posts}
-              handleUpdatePosts={this.handleUpdatePosts}
-              handleUpdateUser={this.handleUpdateUser}
+              // posts={this.state.posts}
+              // handleUpdatePosts={this.handleUpdatePosts}
               triggerWords={this.state.triggerWords}
             />
           }
