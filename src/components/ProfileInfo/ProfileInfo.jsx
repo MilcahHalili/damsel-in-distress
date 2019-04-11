@@ -11,12 +11,14 @@ const ProfileInfo = (props) => {
             </div>
             <div className='Profile-triggerwords-container'>
                 {props.user.triggerwords.map(word => 
-                    <span
+                    <button
                         key={word}
+                        name={word}
                         className='Profile-triggerwords'
+                        onClick={props.handleRemoveTrigger}
                     >
-                        {word}
-                    </span>
+                    {word}
+                    </button>
                 )}
                 <h5>update trigger words</h5>
                 <div className='Profile-triggerwords-container'>

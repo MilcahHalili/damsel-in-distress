@@ -19,22 +19,33 @@ class ProfilePage extends Component {
         this.setState({posts: posts})
     }
 
-    handleAddTrigger = async (e) => {
-        const user = await userService.addTrigger(e.target.name)
-        this.props.handleUpdateUser(user)
+    checkUserTriggers = () => {
         const triggerwords = this.props.triggerWords.filter(word => {
             return !this.props.user.triggerwords.includes(word)
         })
         this.setState({triggerwords: triggerwords})
     }
 
+    handleAddTrigger = async (e) => {
+        const user = await userService.addTrigger(e.target.name)
+        this.props.handleUpdateUser(user)
+        this.checkUserTriggers()
+    }
+
+    handleRemoveTrigger = async (e) => {
+        console.log('remove')
+        const user = await userService.removeTrigger(e.target.name)
+        console.log(user)
+        this.props.handleUpdateUser(user)
+        this.checkUserTriggers()
+    }
+
     async componentDidMount() {
         const posts = await postsService.userIndex()
         const user = await userService.getFullUser()
         this.props.handleUpdateUser(user)
+        this.checkUserTriggers()
         this.setState({posts: posts})
-        // this.props.handleUpdateUser(user)
-        // console.log(this.props.user)
     }
 
     render () {
@@ -44,6 +55,7 @@ class ProfilePage extends Component {
                     user={this.props.user}
                     triggerWords={this.state.triggerwords}
                     handleAddTrigger={this.handleAddTrigger}
+                    handleRemoveTrigger={this.handleRemoveTrigger}
                 />
                 <Posts 
                     posts={this.state.posts}

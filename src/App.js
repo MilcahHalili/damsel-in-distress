@@ -53,6 +53,7 @@ class App extends Component {
             <NewsfeedPage 
               user={this.state.user}
               triggerWords={this.state.triggerWords}
+              handleUpdateUser={this.handleUpdateUser}
             />
             :
             <Redirect to='/about' />

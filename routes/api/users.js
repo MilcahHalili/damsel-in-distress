@@ -10,5 +10,6 @@ router.post('/login', usersCtrl.login);
 router.use(require('../../config/auth'));
 router.get('/', usersCtrl.getUser)
 router.put('/update', usersCtrl.addTrigger)
+router.put('/remove', usersCtrl.removeTrigger)
 
 module.exports = router;

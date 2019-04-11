@@ -11,6 +11,7 @@ const ProfileSideBar = props => {
             user={props.user}
             triggerWords={props.triggerWords}
             handleAddTrigger={props.handleAddTrigger}
+            handleRemoveTrigger={props.handleRemoveTrigger}
             />
            <Resources />
        </div>

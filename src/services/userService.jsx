@@ -18,19 +18,6 @@ function signup(user) {
   });
 }
 
-function addTrigger(trigger){
-  console.log(trigger)
-  return fetch(BASE_URL + 'update', {
-    method: 'PUT', 
-    headers: {
-      'Content-type': 'application/json',
-      'Authorization': 'Bearer ' + tokenService.getToken()
-    }, 
-    body: JSON.stringify({trigger:trigger})
-  })
-  .then(res => res.json())
-}
-
 function getUser() {
   return tokenService.getUserFromToken();
 }
@@ -64,11 +51,35 @@ function login(creds) {
   .then(({token}) => tokenService.setToken(token));
 }
 
+function addTrigger(trigger){
+  return fetch(BASE_URL + 'update', {
+    method: 'PUT', 
+    headers: {
+      'Content-type': 'application/json',
+      'Authorization': 'Bearer ' + tokenService.getToken()
+    }, 
+    body: JSON.stringify({trigger:trigger})
+  })
+  .then(res => res.json())
+}
+
+function removeTrigger(trigger){
+  return fetch(BASE_URL + 'remove', {
+    method: 'PUT', 
+    headers: {
+      'Content-type': 'application/json',
+      'Authorization': 'Bearer ' + tokenService.getToken()
+    }, 
+    body: JSON.stringify({trigger:trigger})
+  })
+  .then(res => res.json())
+}
 export default {
   signup, 
   getUser,
   getFullUser,
   logout, 
   login, 
-  addTrigger
+  addTrigger, 
+  removeTrigger
 };

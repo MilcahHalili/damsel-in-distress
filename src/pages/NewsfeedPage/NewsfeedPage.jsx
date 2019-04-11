@@ -2,12 +2,12 @@ import React, { Component } from 'react';
 import styles from './NewsfeedPage.module.css'
 import Posts from '../../components/Posts/Posts'
 import postsService from '../../services/postsService';
+import userService from '../../services/userService'
 
 class NewsfeedPage extends Component {
     state = {
         posts: []
     }
-
 
     handleUpdatePosts = async () => {
         const posts = await this.checkforTriggerWords()
@@ -48,12 +48,11 @@ class NewsfeedPage extends Component {
         console.log(posts.length)
         console.log(allPosts.length)
         return posts
-        // await this.props.handleUpdatePosts(posts)
     }
 
     async componentDidMount() {
-        // const user = await userService.getUserFull()
-        // this.props.handleUpdateUser(user)
+        const user = await userService.getFullUser()
+        this.props.handleUpdateUser(user)
         const posts = await this.checkforTriggerWords()
         this.setState({posts: posts})
     }
