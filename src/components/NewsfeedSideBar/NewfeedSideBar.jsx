@@ -10,6 +10,7 @@ const NewsfeedSideBar = props => {
         <Search 
             triggerWords={props.triggerWords}
             handleSearch={props.handleSearch}
+            handleUpdatePosts={props.handleUpdatePosts}
         />
         <Resources />
        </div>

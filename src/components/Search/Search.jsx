@@ -16,6 +16,12 @@ const Search = (props) => {
                 </button>
             )}
             </div>
+            <button 
+                className='Search-restart'
+                onClick={props.handleUpdatePosts}
+            >
+            refresh
+            </button>
         </div>
     )
 

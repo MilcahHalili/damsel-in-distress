@@ -14,7 +14,11 @@ const PostFeed = props => {
                 )}
                 </div>
                 <div>
+                {props.user._id === post.user ?
                 <button className='Post-delete' name={post._id} onClick={props.handleDelete}>X</button>
+                :
+                <div></div>
+                }
                 </div>
             </div>
                 <h4 className='Post-text'>{post.text}</h4>

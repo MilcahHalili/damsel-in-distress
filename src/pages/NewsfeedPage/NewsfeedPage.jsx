@@ -16,38 +16,27 @@ class NewsfeedPage extends Component {
     }
 
     checkforTriggerWords = async () => {
-        
         const allPosts = await postsService.index()
-
-        const userPosts = allPosts.filter(post => {
-            return this.props.user._id === post.user
-        })
-        console.log(userPosts)
-
-        const nonUserPosts = allPosts.filter(post => {
-            return this.props.user._id !== post.user
-        })
-        console.log(nonUserPosts)
 
         let isPostValid = (post, user) => {
             let valid = true;
-            for(let i = 0; i < post.tags.length; i++){
-            if(user.triggerwords.includes(post.tags[i] )){
-                valid = false;
-                break;
+            if(user._id === post.user){
+                return valid;
+            } else {
+                for(let i = 0; i < post.tags.length; i++){
+                    if(user.triggerwords.includes(post.tags[i] )){
+                        valid = false;
+                        break;
+                    }
+                }
             }
-         }
-        return valid;
+            return valid;
         }
   
-        const validPosts = nonUserPosts.filter(post => {
+        const posts = allPosts.filter(post => {
             return isPostValid(post, this.props.user) 
         })
-        console.log(validPosts)
 
-        const posts = userPosts.concat(validPosts)
-        console.log(posts.length)
-        console.log(allPosts.length)
         return posts
     }
 
@@ -71,6 +60,7 @@ class NewsfeedPage extends Component {
                 <NewsfeedSideBar
                     triggerWords={this.props.triggerWords}
                     handleSearch={this.handleSearch}
+                    handleUpdatePosts={this.handleUpdatePosts}
                 />
                 <Posts 
                     posts={this.state.posts}
