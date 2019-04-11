@@ -58,14 +58,17 @@ class App extends Component {
             :
             <Redirect to='/about' />
           }/>
+          
           <Route exact path='/user' render={() => 
+            this.state.user ?
             <ProfilePage 
               user={this.state.user}
               handleUpdateUser={this.handleUpdateUser}
               triggerWords={this.state.triggerWords}
             />
-          }
-          />
+            :
+            <Redirect to='/about' />
+          }/>
           <Route exact path='/about' render={() => 
             <AboutPage />
             }/>

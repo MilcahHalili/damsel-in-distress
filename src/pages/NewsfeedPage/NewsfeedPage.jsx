@@ -3,6 +3,7 @@ import styles from './NewsfeedPage.module.css'
 import Posts from '../../components/Posts/Posts'
 import postsService from '../../services/postsService';
 import userService from '../../services/userService'
+import NewsfeedSideBar from '../../components/NewsfeedSideBar/NewfeedSideBar';
 
 class NewsfeedPage extends Component {
     state = {
@@ -50,6 +51,13 @@ class NewsfeedPage extends Component {
         return posts
     }
 
+    handleSearch = async (e) => {
+        const posts = this.state.posts.filter(post => {
+           return post.tags.includes(e.target.name)
+        })
+        this.setState({posts:posts})
+    }
+
     async componentDidMount() {
         const user = await userService.getFullUser()
         this.props.handleUpdateUser(user)
@@ -60,6 +68,10 @@ class NewsfeedPage extends Component {
     render(){
         return (
             <div className={styles.Newsfeed}>
+                <NewsfeedSideBar
+                    triggerWords={this.props.triggerWords}
+                    handleSearch={this.handleSearch}
+                />
                 <Posts 
                     posts={this.state.posts}
                     user={this.props.user}

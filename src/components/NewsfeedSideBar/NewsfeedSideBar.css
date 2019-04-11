@@ -1,4 +1,4 @@
-.Profile-SideBar {
+.Newsfeed-SideBar {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -8,11 +8,11 @@
     width: 30vw;
 }
 
-.Profile-name-bio {
-    text-align: center;
+.Search {
+    text-align: center
 }
 
-.Profile-triggerwords-container {
+.Search-trigger-container {
     display: flex;
     justify-content: center;
     flex-wrap: wrap;
@@ -21,7 +21,7 @@
     margin-left: 5px;
 }
 
-.Profile-triggerwords {
+.Search-triggerwords {
     font-size: 15px;
     background-color: #b8c8df;
     border-radius: 8px;
@@ -30,22 +30,3 @@
     outline: none;
     text-align: center;
 }
-
-.Profile-wrapper {
-    text-align: center;
-    margin: 20px 0px;
-}
-
-@media only screen and (max-width: 820px) {
-    .Profile {
-        flex-direction: column;
-    }
-
-    .Profile-SideBar {
-        border-right: 1px gray solid;
-        margin-left: 20px;
-        padding: 0px 10px;
-        width: 100vw;
-    }
-}
- 

@@ -30,7 +30,7 @@ const ProfileInfo = (props) => {
                         <button
                             key={word}
                             name={word}
-                            className='Profile-triggerword-button'
+                            className='Profile-triggerwords'
                             onClick={props.handleAddTrigger}
                         >
                         {word}
