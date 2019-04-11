@@ -18,10 +18,13 @@ function signup(user) {
   });
 }
 
-function getUserFull(user_id){
-  return fetch(BASE_URL + user_id, {
+function getUserFull(){
+  return fetch(BASE_URL, {
     method: 'GET', 
-    headers: ({'Content-Type': 'application/json'})
+    headers: {
+      'Content-type': 'application/json',
+      'Authorization': 'Bearer ' + tokenService.getToken()
+    }
   })
   .then(res => res.json())
 }

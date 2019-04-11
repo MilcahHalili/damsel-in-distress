@@ -1,20 +1,39 @@
+import tokenService from '../services/tokenService'
+
 const BASE_URL = '/api/posts/';
 
 function index () {
-    return fetch(BASE_URL).then(res => res.json());
+    const options = {
+        method: 'GET',
+        headers: {
+            'Content-type': 'application/json',
+            'Authorization': 'Bearer ' + tokenService.getToken()
+          }
+    }
+    return fetch(BASE_URL, options).then(res => res.json());
 }
 
-function userIndex (user_id){
-    return fetch(BASE_URL + user_id).then(res => res.json());
+function userIndex (){
+    const options = {
+        method: 'GET',
+        headers: {
+            'Content-type': 'application/json',
+            'Authorization': 'Bearer ' + tokenService.getToken()
+          }
+    }
+    return fetch(BASE_URL + 'profile', options).then(res => res.json());
 }
 
-function create (post, user_id) {
+function create (post) {
     const options = {
         method: 'POST', 
-        headers: {'Content-Type': 'application/json'},
+        headers: {
+            'Content-type': 'application/json',
+            'Authorization': 'Bearer ' + tokenService.getToken()
+          },
         body: JSON.stringify({'post': post})
     }
-    return fetch(BASE_URL + user_id, options).then(res => res.json());
+    return fetch(BASE_URL + 'create', options).then(res => res.json());
 }
 
 function deletePost (post_id){

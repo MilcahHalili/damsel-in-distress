@@ -9,6 +9,8 @@ class NewsfeedPage extends Component {
     }
 
     checkforTriggerWords = async () => {
+        console.log(this.props.user)
+        
         const userPosts = this.props.posts.filter(post => {
             let post_id = post._id.toString()
             for(let i=0; i < this.props.user.posts.length; i++){
@@ -53,7 +55,7 @@ class NewsfeedPage extends Component {
     }
 
     async componentDidMount() {
-        const user = await userService.getUserFull(this.props.user._id)
+        const user = await userService.getUserFull()
         this.props.handleUpdateUser(user)
         this.checkforTriggerWords()
     }

@@ -18,7 +18,7 @@ class Posts extends Component {
 
     handleSubmit = async (e) => {
         e.preventDefault()
-        await postsService.create({text: this.state.text, tags: this.state.tags}, this.props.user._id)
+        await postsService.create({text: this.state.text, tags: this.state.tags})
         this.checkforUserPage()
         this.setState({text: '', tags: []})
     }
@@ -26,8 +26,9 @@ class Posts extends Component {
     checkforUserPage = async () => {
         if (this.props.isUserPage === true) {
             console.log('user')
-            let posts = await postsService.userIndex(this.props.user._id)
+            let posts = await postsService.userIndex()
             this.props.handleUpdatePosts(posts)
+            console.log(posts)
         } else {
             console.log('feed')
             const posts = await postsService.index()

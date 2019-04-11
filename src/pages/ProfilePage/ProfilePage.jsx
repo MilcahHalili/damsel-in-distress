@@ -10,7 +10,7 @@ class ProfilePage extends Component {
     }
 
     async componentDidMount() {
-        const user = await userService.getUserFull(this.props.user._id)
+        const user = await userService.getUserFull()
         this.props.handleUpdateUser(user)
         console.log(this.props.user)
     }

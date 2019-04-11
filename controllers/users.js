@@ -48,9 +48,10 @@ async function login(req, res) {
 }
 
 async function getUser(req, res){
-  console.log('here')
+  console.log('get user')
   try {
-    const user = await User.findById(req.params.id).populate('posts')
+    const user = await User.findById(req.user._id).populate('posts')
+    console.log('user: ' + user)
     return res.json(user)
   } catch (err) {
     return res.status(401).json(err)

@@ -3,9 +3,9 @@ const router = express.Router();
 const postsCtrl = require('../../controllers/posts');
 
 router.get('/', postsCtrl.index);
-router.get('/:id', postsCtrl.userIndex)
+router.get('/profile/', postsCtrl.userIndex)
 router.post('/comment', postsCtrl.addComment)
-router.post('/:id', postsCtrl.create)
+router.post('/create', postsCtrl.create)
 router.delete('/delete', postsCtrl.deletePosts)
 
 
