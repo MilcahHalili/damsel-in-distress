@@ -23,7 +23,9 @@ const ProfileInfo = (props) => {
                 {props.triggerWords.map(word =>
                     <button
                         key={word}
+                        name={word}
                         className='Profile-triggerword-button'
+                        onClick={props.handleAddTrigger}
                     >
                     {word}
                     </button>)}

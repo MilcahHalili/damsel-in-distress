@@ -9,5 +9,6 @@ router.post('/login', usersCtrl.login);
 /*---------- Protected Routes ----------*/
 router.use(require('../../config/auth'));
 router.get('/', usersCtrl.getUser)
+router.put('/update', usersCtrl.addTrigger)
 
 module.exports = router;

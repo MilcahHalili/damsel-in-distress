@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import userService from '../../services/userService'
 import styles from './NewsfeedPage.module.css'
 import Posts from '../../components/Posts/Posts'
 import postsService from '../../services/postsService';

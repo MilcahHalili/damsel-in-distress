@@ -10,6 +10,7 @@ const ProfileSideBar = props => {
            <ProfileInfo 
             user={props.user}
             triggerWords={props.triggerWords}
+            handleAddTrigger={props.handleAddTrigger}
             />
            <Resources />
        </div>

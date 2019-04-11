@@ -5,7 +5,8 @@ const SECRET = process.env.SECRET;
 module.exports = {
   signup, 
   login, 
-  getUser
+  getUser, 
+  addTrigger
 };
 
 /*----- Helper Functions -----*/
@@ -50,10 +51,22 @@ async function login(req, res) {
 async function getUser(req, res){
   console.log('get user')
   try {
-    const user = await User.findById(req.user._id).populate('posts')
-    console.log('user: ' + user)
+    const user = await User.findById(req.user._id)
     return res.json(user)
   } catch (err) {
     return res.status(401).json(err)
   }
 }
+
+async function addTrigger(req, res){
+  console.log('added')
+  try {
+    const user = await User.findById(req.user._id)
+    user.triggerwords.push(req.body.trigger)
+    user.save()
+    return res.json(user)
+  } catch (err) {
+    return res.status(401).json(err)
+  }
+}
+

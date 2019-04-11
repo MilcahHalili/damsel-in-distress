@@ -18,7 +18,24 @@ function signup(user) {
   });
 }
 
-function getUserFull(){
+function addTrigger(trigger){
+  console.log(trigger)
+  return fetch(BASE_URL + 'update', {
+    method: 'PUT', 
+    headers: {
+      'Content-type': 'application/json',
+      'Authorization': 'Bearer ' + tokenService.getToken()
+    }, 
+    body: JSON.stringify({trigger:trigger})
+  })
+  .then(res => res.json())
+}
+
+function getUser() {
+  return tokenService.getUserFromToken();
+}
+
+function getFullUser(){
   return fetch(BASE_URL, {
     method: 'GET', 
     headers: {
@@ -27,10 +44,6 @@ function getUserFull(){
     }
   })
   .then(res => res.json())
-}
-
-function getUser() {
-  return tokenService.getUserFromToken();
 }
 
 function logout() {
@@ -54,7 +67,8 @@ function login(creds) {
 export default {
   signup, 
   getUser,
+  getFullUser,
   logout, 
   login, 
-  getUserFull
+  addTrigger
 };

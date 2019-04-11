@@ -30,6 +30,10 @@ class App extends Component {
     this.setState({ user: null });
   }
 
+  handleUpdateUser = user => {
+    this.setState({user: user})
+  }
+
   async componentDidMount() {
     const user = userService.getUser();
     // const posts = await postsService.index();
@@ -56,6 +60,7 @@ class App extends Component {
           <Route exact path='/user' render={() => 
             <ProfilePage 
               user={this.state.user}
+              handleUpdateUser={this.handleUpdateUser}
               triggerWords={this.state.triggerWords}
             />
           }

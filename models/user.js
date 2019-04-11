@@ -8,7 +8,7 @@ const userSchema = new mongoose.Schema({
     bio: String,
     email: {type: String, required: true, lowercase: true, unique: true},
     password: String, 
-    triggerwords: [],
+    triggerwords: [String],
 }, {
     timestamps: true
 });
