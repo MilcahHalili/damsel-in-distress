@@ -63,6 +63,13 @@
 
 .Post-text {
     text-align: left;
+    margin-left: -14px;
+    padding-left: 5px;
+    margin-right: -14px;
+    margin-top: -10px;
+    border-bottom: .25px gray solid;
+    display: flex;
+    align-items: center;
 }
 
 .Post-delete {
@@ -102,17 +109,35 @@
     width: 550px;
 }
 
-.Comments-container {
+.all-comments-container {
     margin-bottom: 15px;
+    padding-top: 5px;
+    margin-left: -5px;
 }
 
-.Comments-text {
-    border: 1px gray solid;
-    border-radius: 4px;
+.Comment-container {
     display: flex;
     align-items: center;
-    margin: 5px;
+}
+
+.Comment-text {
+    border: 1px gray solid;
+    background-color: #F2F3F5;
+    border-radius: 15px;
+    display: flex;
+    align-items: center;
     padding: 5px;
+    margin:3px;
+    font-size: 12px;
+}
+
+.Comment-icon {
+    display: flex;
+    align-items: baseline;
+    border: 1px gray solid;
+    border-radius: 50%;
+    height: 30px;
+    width: 30px;
 }
 
 .Comment-input {

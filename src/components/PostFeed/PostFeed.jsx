@@ -1,4 +1,7 @@
 import React from 'react';
+import {FaHandsHelping} from 'react-icons/fa'
+import { IconContext } from 'react-icons'
+
 
 const PostFeed = props => {
     return (
@@ -21,12 +24,28 @@ const PostFeed = props => {
                 }
                 </div>
             </div>
-                <h4 className='Post-text'>{post.text}</h4>
-                <div className='Comments-container'>
-                    {post.comments.map((comment) =>
-                        <div key={comment._id} className='Comments-text'>
-                            <p>{comment.text}</p>
+            <div className='Post-text'>
+                <p style={{
+                    fontSize: '14px',
+                    padding: '0px',
+                    margin: '0px'
+                }}>{post.text}</p>
+            </div>
+            <div className='all-comments-container'>
+                {post.comments.map((comment) =>
+                    <div key={comment._id} className='Comment-container'>
+                        <div className='Comment-icon'>
+                            <IconContext.Provider value={{ style: { verticalAlign: 'middle', fontSize:'25px' } }}>
+                                <FaHandsHelping />
+                            </IconContext.Provider>
                         </div>
+                        <div className='Comment-text'>
+                            <p style={{
+                                padding: '2px',
+                                margin: '2px'
+                            }}>{comment.text}</p>
+                        </div>
+                    </div>
                     )}
                 </div>
                 <form id={post._id} className='Comment-form'  onSubmit={props.handleAddComment}>
