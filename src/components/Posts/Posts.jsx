@@ -28,6 +28,11 @@ class Posts extends Component {
         this.props.handleUpdatePosts()
     }
 
+    handleCommentDelete = async(e) => {
+        await postsService.deleteComment(e.target.id, e.target.name)
+        this.props.handleUpdatePosts()
+    }
+
     handleAddComment = async (e) => {
         e.preventDefault();
         await postsService.addComment(e.target.id, this.state.comment)
@@ -59,6 +64,7 @@ class Posts extends Component {
                     handleDelete={this.handleDelete}
                     handleChange={this.handleChange}
                     handleAddComment={this.handleAddComment}
+                    handleCommentDelete={this.handleCommentDelete}
                     isUserPage={this.props.isUserPage}
                     user={this.props.user}
                 />

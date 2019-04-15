@@ -6,6 +6,7 @@ module.exports = {
     create, 
     deletePosts, 
     addComment, 
+    deleteComment,
     userIndex
 }
 
@@ -30,9 +31,21 @@ async function create (req, res){
     }
 }
 
-async function deletePosts (req,res){
+async function deletePosts(req,res){
     try {
         await Post.findByIdAndDelete(req.body.post_id)
+        index(req, res);
+    } catch (err) {
+        res.json({err})
+    }
+}
+
+async function deleteComment(req,res){
+    try {
+      await Post.findByIdAndUpdate(req.body.post_id, {
+            $pull: {
+              comments: {_id: req.params.id}
+            }})
         index(req, res);
     } catch (err) {
         res.json({err})

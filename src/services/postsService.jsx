@@ -39,7 +39,10 @@ function create (post) {
 function deletePost (post_id){
     const options = {
         method: 'DELETE',
-        headers: {'Content-Type': 'application/json'},
+        headers: {
+            'Content-type': 'application/json',
+            'Authorization': 'Bearer ' + tokenService.getToken()
+          },
         body: JSON.stringify({'post_id': post_id})
     }
     return fetch(BASE_URL + 'delete', options).then(res => res.json())
@@ -48,10 +51,25 @@ function deletePost (post_id){
 function addComment (post_id, comment){
     const options = {
         method: 'POST', 
-        headers: {'Content-Type': 'application/json'}, 
+        headers: {
+            'Content-type': 'application/json',
+            'Authorization': 'Bearer ' + tokenService.getToken()
+          }, 
         body: JSON.stringify({'post_id': post_id, 'comment': comment})
     }
     return fetch(BASE_URL + 'comment', options).then(res => res.json())
+}
+
+function deleteComment(post_id, comment_id) {
+    const options = {
+        method: 'DELETE',
+        headers: {
+            'Content-type': 'application/json',
+            'Authorization': 'Bearer ' + tokenService.getToken()
+          },
+        body: JSON.stringify({'post_id': post_id})
+    }
+    return fetch(BASE_URL + 'delete/' + comment_id, options).then(res => res.json())
 }
 
 export default {
@@ -59,5 +77,6 @@ export default {
     create, 
     deletePost,
     addComment, 
+    deleteComment,
     userIndex
 }
