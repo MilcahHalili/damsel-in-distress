@@ -5,8 +5,6 @@ const ProfileInfo = (props) => {
         <div className='Profile-info'>
             <div className='Profile-name-bio'>
                 <h1>{props.user.name}</h1>
-                <h5>about me</h5>
-                <p>{props.user.bio}</p>
             </div>
             <div className='Profile-wrapper'>
                 <h4>my trigger words</h4>
