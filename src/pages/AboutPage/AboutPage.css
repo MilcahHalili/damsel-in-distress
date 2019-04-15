@@ -3,17 +3,18 @@
     margin-top: 50px;
 }
 
-.About-Heading {
-    text-align: left;
-    margin-left: 10px;
-    margin-bottom: 0px;
-    border-bottom: 2px black dotted;
+.About-bottom-section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.About-us {
+    width: 50%;
 }
 
 .About-Details {
-    text-align: left;
-    margin-left: 10px;
-    font-size: 20px;
+    font-size: 15px;
 }
 
 .Def {

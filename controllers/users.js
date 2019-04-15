@@ -50,7 +50,6 @@ async function login(req, res) {
 }
 
 async function getUser(req, res){
-  console.log('get user')
   try {
     const user = await User.findById(req.user._id)
     return res.json(user)
@@ -60,12 +59,10 @@ async function getUser(req, res){
 }
 
 async function addTrigger(req, res){
-  console.log('added')
   try {
     const user = await User.findById(req.user._id)
     user.triggerwords.push(req.body.trigger)
     user.save()
-    console.log(user)
     return res.json(user)
   } catch (err) {
     return res.status(401).json(err)
@@ -74,12 +71,9 @@ async function addTrigger(req, res){
 
 
 async function removeTrigger(req, res){
-  console.log('removed')
-  console.log(req.body.trigger)
   try {
     await User.findById(req.user._id).update({$pull: { triggerwords: req.body.trigger }})
     const user = await User.findById(req.user._id)
-    console.log(user)
     user.save()
     return res.json(user)
   } catch (err) {

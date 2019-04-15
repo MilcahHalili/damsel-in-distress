@@ -18,17 +18,14 @@ async function index (req, res){
 async function userIndex(req, res){
     const posts = await Post.find({user: req.user._id})
     .sort({createdAt: -1})
-    console.log(posts)
     return res.json(posts)
 }
 
 async function create (req, res){
     try {
-        const post = await Post.create({text: req.body.post.text, tags: req.body.post.tags, user: req.user._id});
-        console.log(post)
+        await Post.create({text: req.body.post.text, tags: req.body.post.tags, user: req.user._id});
         index(req, res);
     } catch (err) {
-        console.log(err)
         res.json({err})
     }
 }
@@ -43,7 +40,6 @@ async function deletePosts (req,res){
 }
 
 async function addComment (req, res) {
-    console.log('here')
     try {
         await Post.findById(req.body.post_id, function (err, post){
             post.comments.push({text: req.body.comment});

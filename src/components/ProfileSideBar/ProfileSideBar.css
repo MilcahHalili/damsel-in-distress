@@ -37,10 +37,6 @@
 }
 
 @media only screen and (max-width: 820px) {
-    .Profile {
-        flex-direction: column;
-    }
-
     .Profile-SideBar {
         border-right: none;
         margin-left: 0px;

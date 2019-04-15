@@ -33,9 +33,7 @@ class ProfilePage extends Component {
     }
 
     handleRemoveTrigger = async (e) => {
-        console.log('remove')
         const user = await userService.removeTrigger(e.target.name)
-        console.log(user)
         this.props.handleUpdateUser(user)
         this.checkUserTriggers()
     }

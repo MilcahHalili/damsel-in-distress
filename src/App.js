@@ -36,7 +36,6 @@ class App extends Component {
 
   async componentDidMount() {
     const user = userService.getUser();
-    // const posts = await postsService.index();
     this.setState({ user:user });
   }
 
@@ -46,6 +45,7 @@ class App extends Component {
         <NavBar 
           user={this.state.user}
           handleLogout={this.handleLogout}
+          notification={this.state.notification}
         />
         <Switch>
           <Route exact path='/' render={()=> 
