@@ -45,7 +45,7 @@ const PostFeed = props => {
                                 margin: '2px'
                             }}>{comment.text}</p>
                         </div>
-                        {props.user._id === post.user ?
+                        {props.user._id === post.user || props.user._id === comment.user ?
                         <button className='Post-delete' id={post._id} name={comment._id} onClick={props.handleCommentDelete}>X</button>
                         :
                         <div></div>

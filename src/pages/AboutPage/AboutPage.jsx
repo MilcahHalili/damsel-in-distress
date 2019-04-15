@@ -13,7 +13,7 @@ const AboutPage = () => {
             </div>
             <div className='About-bottom-section'>
             <div className='About-us'>
-            <h5 className='About-Details'>For generations, the term Damsel In Distress has been used to weaken women, suggeting that seeking help is somehow a lesser trait than being the helper. But we are reclaiming this term.
+            <h5 className='About-Details'>For generations, the term Damsel In Distress has been used to weaken women, suggesting that seeking help is somehow a lesser trait than being the helper. But we are reclaiming this term.
             <br></br><br></br>
             Here at Damsel In Distress we are dedicated to supporting people in crisis by providing a forum for anonymous posting and commenting, allowing people the freedom to seek support without repercussions and judgment. Using common triggerwords, users can tag their own posts by type and screen posts by other users that may be triggering. 
             <br></br><br></br>

@@ -22,6 +22,12 @@ const Resources = () => {
             </div>
 
             <div className='Resource-details'>
+                <h4>National Domestic Violence Hotline</h4>
+                <h5>call:  1-800-799-7233(SAFE)</h5>
+                <a href='https://www.thehotline.org/what-is-live-chat/' target='_blank' rel="noopener noreferrer">online chat</a>
+            </div>
+
+            <div className='Resource-details'>
                 <h4>Addiction Hotline</h4>
                 <h5>call:  1-877-226-3111</h5>
             </div>

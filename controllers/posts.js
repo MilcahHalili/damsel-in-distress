@@ -55,7 +55,7 @@ async function deleteComment(req,res){
 async function addComment (req, res) {
     try {
         await Post.findById(req.body.post_id, function (err, post){
-            post.comments.push({text: req.body.comment});
+            post.comments.push({text: req.body.comment, user: req.user._id});
             post.save();
             index(req,res);
         }) 
