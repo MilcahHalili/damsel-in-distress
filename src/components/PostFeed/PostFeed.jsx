@@ -51,7 +51,7 @@ const PostFeed = props => {
                         <div></div>
                         }
                     </div>
-                    )}
+                )}
                 </div>
                 <form id={post._id} className='Comment-form'  onSubmit={props.handleAddComment}>
                     <input onChange={props.handleChange}

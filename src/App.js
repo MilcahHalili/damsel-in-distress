@@ -23,8 +23,9 @@ class App extends Component {
     e.preventDefault()
   }
 
-  handleSignuporLogin = () => {
-    this.setState({user: userService.getUser()});
+  handleSignuporLogin = async () => {
+   await this.setState({user: userService.getUser()});
+   socket.getUser();
   }
 
   handleLogout = () => {
@@ -34,6 +35,10 @@ class App extends Component {
 
   handleUpdateUser = user => {
     this.setState({user: user})
+  }
+
+  handleRemoveNotification = () => {
+    this.setState({notification:null})
   }
 
   async componentDidMount() {
@@ -52,6 +57,7 @@ class App extends Component {
           user={this.state.user}
           handleLogout={this.handleLogout}
           notification={this.state.notification}
+          handleRemoveNotification={this.handleRemoveNotification}
         />
         <Switch>
           <Route exact path='/' render={()=> 

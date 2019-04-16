@@ -19,7 +19,6 @@ function getUser() {
   }
 
 function getComment(post_id){
-    console.log('here')
     socket.emit('get-comment', {token: tokenService.getToken(), post_id: post_id})
 }
 
