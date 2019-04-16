@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import postsService from '../../services/postsService'
 import AddPost from '../AddPost/AddPost'
 import PostFeed from '../PostFeed/PostFeed'
+import socket from '../../socket'
 
 import './Posts.css'
 
@@ -35,6 +36,7 @@ class Posts extends Component {
 
     handleAddComment = async (e) => {
         e.preventDefault();
+        socket.getComment(e.target.id)
         await postsService.addComment(e.target.id, this.state.comment)
         await this.props.handleUpdatePosts()
         this.setState({comment: ''})

@@ -10,10 +10,12 @@ import ProfilePage from './pages/ProfilePage/ProfilePage'
 import NavBar from './components/NavBar/NavBar'
 
 import userService from './services/userService'
+import socket from './socket'
 
 class App extends Component {
   state = {
     user: null,
+    notification: null,
     triggerWords: ['depression', 'anxiety', 'sexual violence', 'rape', 'sexual harassment', 'domestic violence', 'self-harm', 'suicide', 'relationships', 'breakups', 'work', 'loss', 'loneliness', 'stress', 'addiction', 'eating disorder']
   }
 
@@ -35,8 +37,12 @@ class App extends Component {
   }
 
   async componentDidMount() {
+    socket.registerApp(this);
     const user = userService.getUser();
-    this.setState({ user:user });
+    if(user) {
+      socket.getUser()
+      this.setState({ user:user });
+    }
   }
 
   render() {

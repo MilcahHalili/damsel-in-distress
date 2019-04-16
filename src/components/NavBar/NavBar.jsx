@@ -28,10 +28,12 @@ const NavBar = (props) => {
                 <Link to ='/about' className={styles.NavLink}>about</Link>
                 &nbsp; &nbsp;
                 {/* <Link to ='' className={styles.NavLink}>chat</Link>
-                &nbsp; &nbsp;
+                &nbsp; &nbsp; */}
                 <IconContext.Provider value={{ style: { verticalAlign: 'middle'} }}>
-                <span className={styles.NavNotfications}> <FaBell /></span>
-                </IconContext.Provider>    */}
+                <span className={styles.NavNotfications} style={{
+                    color: props.notification ? 'red' : 'black'
+                }}> <FaBell /></span>
+                </IconContext.Provider>  
             </div>
         </div>
         :

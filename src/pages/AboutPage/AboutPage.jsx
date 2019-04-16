@@ -19,6 +19,9 @@ const AboutPage = () => {
             <br></br><br></br>
             Let's redefine what it means to be a damsel in distress by showing the world that there's power in both sides of the equation. And that it's not always action that needs to be taken. Sometimes, all we need is to be heard. </h5>
             </div>
+            <h4 style={{
+                fontStyle: "italic"
+            }}>To start sharing & supporting, please sign up or login!</h4>
             <div className='About-resources'>
                 <Resources />
             </div>
