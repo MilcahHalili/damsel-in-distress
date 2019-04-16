@@ -10,7 +10,6 @@ function registerApp(app) {
 
 /*--- Listeners for messages from server ---*/
 socket.on('new-comment', function(notification) {
-    console.log(notification)
     App.setState({notification});
 });
 
