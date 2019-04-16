@@ -12,7 +12,7 @@ MongoDB | Mongoose | Node.js | Express | React | Javascript | Socket.io | CSS
 
 
 ### SIGN UP TODAY: 
-https://damsel-in-distress.herokuapp.com/user 
+https://damsel-in-distress.herokuapp.com
 
 ### THE PLANNING PROCESS: 
 https://trello.com/b/bVpbycq0/damsel-in-distress
