@@ -5,19 +5,19 @@ Here at Damsel In Distress we are dedicated to supporting people in crisis by pr
 
 Let's redefine what it means to be a damsel in distress by showing the world that there's power in both sides of the equation. And that it's not always action that needs to be taken. Sometimes, all we need is to be heard. 
 
-# TECHNOLOGIES USED
+## TECHNOLOGIES USED
 MongoDB | Mongoose | Node.js | Express | React | Javascript | Socket.io | CSS
 
-# A GLIMPSE AT THE APP
+## A GLIMPSE AT THE APP
 
 
-### SIGN UP TODAY: 
+#### SIGN UP TODAY: 
 https://damsel-in-distress.herokuapp.com
 
-### THE PLANNING PROCESS: 
+#### THE PLANNING PROCESS: 
 https://trello.com/b/bVpbycq0/damsel-in-distress
 
-# LOOKING TOWARD THE FUTURE
+## LOOKING TOWARD THE FUTURE
 Add a modal to show what post has been commented on when the alert happens
 Implement socket.io to provide a chat feature to allow users to talk directly to another user (anonymously)
 
