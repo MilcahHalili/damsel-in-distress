@@ -13,8 +13,10 @@ MongoDB | Mongoose | Node.js | Express | React | Javascript | Socket.io | CSS
 Welcome / About Us
 ![](https://github.com/eliana-michelle/damsel-in-distress/blob/master/public/About%20Page.png)
 
+
 Newsfeed
 ![](https://github.com/eliana-michelle/damsel-in-distress/blob/master/public/Newsfeed.png)
+
 
 Profile Page (trigger words)
 ![](https://github.com/eliana-michelle/damsel-in-distress/blob/master/public/Profile%20Trigger%20Words.png)
