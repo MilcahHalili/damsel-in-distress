@@ -6,7 +6,7 @@ Here at Damsel In Distress we are dedicated to supporting people in crisis by pr
 Let's redefine what it means to be a damsel in distress by showing the world that there's power in both sides of the equation. And that it's not always action that needs to be taken. Sometimes, all we need is to be heard. 
 
 ## TECHNOLOGIES USED
-MongoDB | Mongoose | Node.js | Express | React | Javascript | Socket.io | CSS
+MongoDB | Mongoose | Node.js | Express | ReactJS | Javascript | Socket.io | CSS | JSON | JWT
 
 ## A GLIMPSE AT THE APP
 
