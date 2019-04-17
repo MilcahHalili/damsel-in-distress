@@ -24,6 +24,8 @@ class NavBar extends Component {
                     <Link to= '/user' className={styles.NavWelcome}>WELCOME, {this.props.user.name.toLowerCase()}</Link>
                 </div>
                 <div className={styles.NavTools}>
+                    <Link to ='/user' className={styles.NavLink}>profile</Link>
+                    &nbsp; &nbsp;
                     <Link to ='/' className={styles.NavLink}>feed</Link>
                     &nbsp; &nbsp;
                     <Link to ='/about' className={styles.NavLink}>about</Link>
