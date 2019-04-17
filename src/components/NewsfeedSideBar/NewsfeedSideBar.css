@@ -33,7 +33,10 @@
 .Search-restart {
     background-color: white;
     width: 150px;
+}
 
+.Search-triggerwords:hover, .Search-restart:hover {
+    background-color: gray;
 }
 
 @media only screen and (max-width: 820px) {

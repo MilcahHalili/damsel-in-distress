@@ -6,6 +6,8 @@ import { IconContext } from 'react-icons'
 const PostFeed = props => {
     return (
         <div>
+            {props.posts.length > 0 ?
+            <div>
             {props.posts.map((post, idx) => 
            <div 
             className='Post-container' 
@@ -64,6 +66,12 @@ const PostFeed = props => {
                 </form>
             </div>
             )}
+        </div>
+        : 
+        <h5 style={{
+            textAlign: 'center'
+        }}>whoops! sorry, no posts found. <br></br>get the conversation started by posting your own!</h5>
+        }
         </div>
     )
 }

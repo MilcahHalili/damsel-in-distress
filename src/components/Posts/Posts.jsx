@@ -43,9 +43,16 @@ class Posts extends Component {
     }
 
     handleAddTag = e => {
-        let tag = e.target.name 
+        let clickedTag = e.target.name 
         let tagsCopy = this.state.tags
-        tagsCopy.push(tag)
+        if(tagsCopy.includes(clickedTag)){
+            tagsCopy = tagsCopy.filter(tag => {
+                return tag !== clickedTag
+            })
+        } else {
+            tagsCopy.push(clickedTag)
+        }
+        console.log(tagsCopy)
         this.setState({tags: tagsCopy})
     }
 
